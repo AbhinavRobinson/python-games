@@ -9,44 +9,45 @@ def init():
     win.tracer(0)
 
 
-# ADD PADDLE A
-pd_a = turtle.Turtle()
-pd_a.speed(0)
-pd_a.shape("square")
-pd_a.color("white")
-pd_a.shapesize(stretch_wid=5, stretch_len=1)
+class Paddle:
 
-pd_a.penup()
-pd_a.goto(-350, 0)
-
-# ADD PADDLE B
-pd_b = turtle.Turtle()
-pd_b.speed(0)
-pd_b.shape("square")
-pd_b.color("white")
-pd_b.shapesize(stretch_wid=5, stretch_len=1)
-
-pd_b.penup()
-pd_b.goto(350, 0)
-
-# ADD BALL
-ball = turtle.Turtle()
-ball.speed(0)
-ball.shape("square")
-ball.color("white")
-
-ball.penup()
-ball.goto(0, 0)
+    def __init__(self, xcor, ycor):
+        self = turtle.Turtle()
+        self.speed(0)
+        self.shape("square")
+        self.color("white")
+        self.shapesize(stretch_wid=5, stretch_len=1)
+        self.penup()
+        self.goto(xcor, ycor)
 
 
-# MOVE PADDLES
-def move(self, sign):
-    self.sety(pd_a.ycor()+(20*sign))
+class Ball:
+
+    def __init__(self):
+        self = turtle.Turtle()
+        self.speed(0)
+        self.shape("square")
+        self.color("white")
+
+        self.penup()
+        self.goto(0, 0)
+
+
+def createGameObjects():
+
+    # ADD PADDLE A
+    pd_a = Paddle(-350, 0)
+
+    # ADD PADDLE B
+    pd_b = Paddle(350, 0)
+
+    # ADD BALL
+    ball = Ball()
+
+    # MOVE PADDLES
 
 
 # START GAME LOOP
-
-
 def main():
     init()
     while True:
