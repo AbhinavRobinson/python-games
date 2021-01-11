@@ -1,11 +1,12 @@
 import turtle
 
 
-win = turtle.Screen()
-win.title("Pong by @abhinav.robinson")
-win.bgcolor("black")
-win.setup(width=800, height=600)
-win.tracer(0)
+def init():
+    win = turtle.Screen()
+    win.title("Pong by @abhinav.robinson")
+    win.bgcolor("black")
+    win.setup(width=800, height=600)
+    win.tracer(0)
 
 
 # ADD PADDLE A
@@ -37,10 +38,17 @@ ball.color("white")
 ball.penup()
 ball.goto(0, 0)
 
+
+# MOVE PADDLES
+def move(self, sign):
+    self.sety(pd_a.ycor()+(20*sign))
+
+
 # START GAME LOOP
 
 
 def main():
+    init()
     while True:
         win.update()
 
