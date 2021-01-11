@@ -1,82 +1,76 @@
 import turtle
 
+wn = turtle.Screen()
+wn.title("Pong")
+wn.bgcolor("black")
+wn.setup(width=800, height=600)
+wn.tracer(0)
 
-class getWindow(turtle.Turtle):
+# Score
+score_a = 0
+score_b = 0
 
-    window = None
+# Paddle A
+paddle_a = turtle.Turtle()
+paddle_a.speed(0)
+paddle_a.shape("square")
+paddle_a.color("white")
+paddle_a.shapesize(stretch_wid=5, stretch_len=1)
+paddle_a.penup()
+paddle_a.goto(-350, 0)
 
-    def __init__(self):
-        self.window = turtle.Screen()
-        self.window.title("Pong by @abhinav.robinson")
-        self.window.bgcolor("black")
-        self.window.setup(width=800, height=600)
-        self.window.tracer(0)
+# Paddle B
+paddle_b = turtle.Turtle()
+paddle_b.speed(0)
+paddle_b.shape("square")
+paddle_b.color("white")
+paddle_b.shapesize(stretch_wid=5, stretch_len=1)
+paddle_b.penup()
+paddle_b.goto(350, 0)
 
-    def run(self):
-        while True:
-            self.window.update()
+# Ball
+ball = turtle.Turtle()
+ball.speed(0)
+ball.shape("square")
+ball.color("white")
+ball.penup()
+ball.goto(0, 0)
+ball.dx = 2
+ball.dy = 2
 
-
-class Paddle(turtle.Turtle):
-    xcor, ycor = 0, 0
-
-    def __init__(self, xcor, ycor):
-        self = turtle.Turtle()
-        self.speed(0)
-        self.shape("square")
-        self.color("white")
-
-        self.shapesize(stretch_wid=5, stretch_len=1)
-
-        self.penup()
-        self.goto(xcor, ycor)
-
-        self.xcor = self.xcor()
-        self.ycor = self.ycor()
-
-    def move(self, mag):
-        self.sety(self.ycor+(20*mag))
-
-
-class Ball(turtle.Turtle):
-    xcor, ycor = 0, 0
-
-    def __init__(self):
-        self = turtle.Turtle()
-        self.speed(0)
-        self.shape("square")
-        self.color("white")
-
-        self.penup()
-        self.goto(0, 0)
-
-        self.xcor = self.xcor()
-        self.ycor = self.ycor()
+# Functions
 
 
-def createGameObjects():
-    # ADD PADDLE A
-    pd_a = Paddle(-350, 0)
-
-    # ADD PADDLE B
-    pd_b = Paddle(350, 0)
-
-    # ADD BALL
-    ball = Ball()
+def paddle_a_up():
+    y = paddle_a.ycor()
+    y += 20
+    paddle_a.sety(y)
 
 
-# def actionHandler(self):
-#     win.
-
-# START GAME LOOP
-
-
-def main():
-    win = getWindow()
-
-    createGameObjects()
-
-    win.run()
+def paddle_a_down():
+    y = paddle_a.ycor()
+    y -= 20
+    paddle_a.sety(y)
 
 
-main()
+def paddle_b_up():
+    y = paddle_b.ycor()
+    y += 20
+    paddle_b.sety(y)
+
+
+def paddle_b_down():
+    y = paddle_b.ycor()
+    y -= 20
+    paddle_b.sety(y)
+
+
+# Keyboard bindings
+wn.listen()
+wn.onkeypress(paddle_a_up, "w")
+wn.onkeypress(paddle_a_down, "s")
+wn.onkeypress(paddle_b_up, "Up")
+wn.onkeypress(paddle_b_down, "Down")
+
+while True:
+    wn.update()
