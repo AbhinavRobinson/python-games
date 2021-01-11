@@ -29,6 +29,13 @@ pd_b.penup()
 pd_b.goto(350, 0)
 
 # ADD BALL
+ball = turtle.Turtle()
+ball.speed(0)
+ball.shape("square")
+ball.color("white")
+
+ball.penup()
+ball.goto(0, 0)
 
 # START GAME LOOP
 
