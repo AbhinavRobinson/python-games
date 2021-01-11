@@ -1,3 +1,3 @@
 # Making games in python
 
-Imma make a tetris in python :)
+Imma make a games in python :)
