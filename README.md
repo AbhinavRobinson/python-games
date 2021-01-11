@@ -1,3 +1,3 @@
-# Pyris : A python tetris game
+# Making games in python
 
 Imma make a tetris in python :)
