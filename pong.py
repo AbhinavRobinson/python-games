@@ -1,15 +1,18 @@
 import turtle
 
 
-def init():
+def run():
     win = turtle.Screen()
     win.title("Pong by @abhinav.robinson")
     win.bgcolor("black")
     win.setup(width=800, height=600)
     win.tracer(0)
 
+    while True:
+        win.update()
 
-class Paddle:
+
+class Paddle(turtle.Turtle):
 
     def __init__(self, xcor, ycor):
         self = turtle.Turtle()
@@ -21,7 +24,7 @@ class Paddle:
         self.goto(xcor, ycor)
 
 
-class Ball:
+class Ball(turtle.Turtle):
 
     def __init__(self):
         self = turtle.Turtle()
@@ -37,7 +40,7 @@ def createGameObjects():
 
     # ADD PADDLE A
     pd_a = Paddle(-350, 0)
-
+    
     # ADD PADDLE B
     pd_b = Paddle(350, 0)
 
@@ -49,9 +52,9 @@ def createGameObjects():
 
 # START GAME LOOP
 def main():
-    init()
-    while True:
-        win.update()
+    createGameObjects()
+
+    run()
 
 
 main()
